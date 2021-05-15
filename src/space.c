@@ -29,16 +29,16 @@ int main (void){
 
     bool done_recv = false;
 
-    char message[MAX_MESSAGE_SIZE];
-    memset(message, 0x0, MAX_MESSAGE_SIZE);
+    char message[MESSAGE_SIZE];
+    memset(message, 0x0, MESSAGE_SIZE);
     eprintf("Read %ld bytes from serial.", space_recv(fd, message, &done_recv));
     eprintf("Message contents:");
 
-    for (int i = 0; i < MAX_MESSAGE_SIZE; i++){
+    for (int i = 0; i < MESSAGE_SIZE; i++){
         printf("%x", message[i]);
     } printf("\n");
 
-    for (int i = 0; i < MAX_MESSAGE_SIZE; i++){
+    for (int i = 0; i < MESSAGE_SIZE; i++){
         printf("%c", message[i]);
     } printf("\n");
     
@@ -101,11 +101,10 @@ ret:
 }
 
 ssize_t space_recv(int fd, char message[], bool* done_recv){
-    ssize_t msg_sz = strlen(message);
     ssize_t rd_sz = 0;
     ssize_t retval = 0;
-    while (!done_recv && rd_sz < msg_sz) {
-        retval = read(fd, message + rd_sz, msg_sz - rd_sz);
+    while (!done_recv && rd_sz < MESSAGE_SIZE) {
+        retval = read(fd, message + rd_sz, MESSAGE_SIZE - rd_sz);
         if (retval >= 0)
             rd_sz += retval;
     }

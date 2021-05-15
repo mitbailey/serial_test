@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAX_MESSAGE_SIZE 64
+#define MESSAGE_SIZE 61
 
 #ifndef eprintf
 #define eprintf(str, ...)                                                    \

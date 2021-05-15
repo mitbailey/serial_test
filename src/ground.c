@@ -91,11 +91,10 @@ ret:
 }
 
 ssize_t ground_send(int fd, char message[], bool* done_send){
-    ssize_t msg_sz = strlen(message);
     ssize_t wr_sz = 0;
     ssize_t retval = 0;
-    while (!done_send && wr_sz < msg_sz) {
-        retval = read(fd, message + wr_sz, msg_sz - wr_sz);
+    while (!done_send && wr_sz < MESSAGE_SIZE) {
+        retval = read(fd, message + wr_sz, MESSAGE_SIZE - wr_sz);
         if (retval >= 0)
             wr_sz += retval;
     }
