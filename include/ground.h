@@ -10,3 +10,9 @@
  */
 
 #define GROUND_SLEEP_TIME 1
+
+#include "common.h"
+
+int ground_init(const char *sername, int baud);
+
+ssize_t ground_send(int fd, char message[], bool* done_send);

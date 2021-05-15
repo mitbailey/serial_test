@@ -9,9 +9,7 @@
  * 
  */
 
-
-#include "include/common.h"
-#include "include/space.h"
+#include "space.h"
 
 int main (void){
     eprintf("Space is running.");
@@ -102,8 +100,8 @@ ret:
     return fd;
 }
 
-ssize_t space_recv(int fd, char message[], bool done_recv){
-    ssize_t msg_sz = sizeof(message);
+ssize_t space_recv(int fd, char message[], bool* done_recv){
+    ssize_t msg_sz = strlen(message);
     ssize_t rd_sz = 0;
     ssize_t retval = 0;
     while (!done_recv && rd_sz < msg_sz) {
