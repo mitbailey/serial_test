@@ -103,7 +103,7 @@ ret:
 ssize_t space_recv(int fd, char message[], bool* done_recv){
     ssize_t rd_sz = 0;
     ssize_t retval = 0;
-    while (!done_recv && rd_sz < MESSAGE_SIZE) {
+    while (!(*done_recv) && rd_sz < MESSAGE_SIZE) {
         retval = read(fd, message + rd_sz, MESSAGE_SIZE - rd_sz);
         if (retval >= 0)
             rd_sz += retval;

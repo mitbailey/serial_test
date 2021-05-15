@@ -11,15 +11,15 @@ COBJ = $(SRC:$(SRC_DIR)/%.c=$(SRC_DIR)/%.o)
 all: ground space
 
 ground: src/ground.c
-	$(CC) $(EDCFLAGS) src/ground.c -o ground.o $(EDLDFLAGS)
+	$(CC) $(EDCFLAGS) src/ground.c -o ground.out $(EDLDFLAGS)
 
 space: src/space.c
-	$(CC) $(EDCFLAGS) src/space.c -o space.o $(EDLDFLAGS)
+	$(CC) $(EDCFLAGS) src/space.c -o space.out $(EDLDFLAGS)
 
 .PHONY: clean
 
 clean:
-	$(RM) *.o
+	$(RM) *.out
 
 
 
